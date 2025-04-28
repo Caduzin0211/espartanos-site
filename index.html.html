@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Espartanos Hamburgueria - A mais autêntica experiência de hambúrgueres artesanais premium em Bauru/SP">
+    <title>Espartanos | Hamburgueria Artesanal Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@400;600;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #E67E22;
+            --primary-dark: #D35400;
+            --secondary: #5D4037;
+            --dark: #212121;
+            --light: #FFF8F0;
+            --accent: #B71C1C;
+            --gold: #FFD700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, .nav-links, .btn {
+            font-family: 'Spartan', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(33, 33, 33, 0.9);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 15px 5%;
+            background-color: rgba(33, 33, 33, 0.98);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            height: 50px;
+            transition: all 0.3s;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 40px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1512152272829-e3139592d56f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--dark);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 5%;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--secondary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 20px auto;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .about-image:before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--primary);
+            border-radius: 10px;
+            z-index: -1;
+        }
+        
+        /* Menu Section */
+        .menu {
+            padding: 100px 5%;
+            background-color: var(--light);
+        }
+        
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        
+        .tab-btn {
+            padding: 10px 25px;
+            margin: 0 10px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-family: 'Spartan', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--dark);
+        }
+        
+        .tab-btn.active {
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .menu-item-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .menu-item:hover .menu-item-img img {
+            transform: scale(1.1);
+        }
+        
+        .menu-item-content {
+            padding: 25px;
+        }
+        
+        .item-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .item-price {
+            color: var(--primary);
+        }
+        
+        .item-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: 50px 5%;
+            background-color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 250px;
+            gap: 15px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 5%;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            flex: 1;
+            padding-right: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-detail i {
+            font-size: 1.2rem;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-family: 'Spartan', sans-serif;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 5% 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .opening-hours p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .opening-hours p span {
+            opacity: 0.8;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-text, .contact-info {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .hamburger {
+                display: block;
+                color: white;
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#">
+            <img src="logo.png" alt="Espartanos Logo" class="logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#menu">Cardápio</a></li>
+            <li><a href="#gallery">Galeria</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Espartanos</h1>
+            <p>Honra-se a mesa como se honra o campo de batalha</p>
+            <div>
+                <a href="#menu" class="btn">Ver Cardápio</a>
+                <a href="#contact" class="btn btn-outline">Faça sua Reserva</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">Nossa História</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Prepare-se para uma jornada que vai além do paladar</h3>
+                <p>A Espartanos é uma hamburgueria de alto padrão que entrega mais que refeições: entregamos conquistas. Inspirados pela bravura dos lendários guerreiros de Esparta, unimos força, excelência e sabor em experiências inesquecíveis para quem exige o melhor.</p>
+                <p>Aqui, cada hambúrguer é uma batalha vencida. Cada mordida, uma prova de honra. Seja bem-vindo ao verdadeiro campo de batalha do sabor.</p>
+                <p>Somos movidos pela paixão em criar hambúrgueres grandiosos, feitos com cortes nobres, ingredientes selecionados e receitas que respeitam a tradição e a excelência.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Espartanos Hamburgueria">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <h2 class="section-title">Nosso Cardápio</h2>
+        <div class="menu-tabs">
+            <button class="tab-btn active" data-tab="burgers">Hambúrgueres</button>
+            <button class="tab-btn" data-tab="kids">Kids</button>
+            <button class="tab-btn" data-tab="sides">Acompanhamentos</button>
+            <button class="tab-btn" data-tab="drinks">Bebidas</button>
+        </div>
+        
+        <div class="menu-grid" id="burgers-tab">
+            <!-- Trezentos -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1598&q=80" alt="Trezentos Burger">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Trezentos <span class="item-price">R$52,90</span></h3>
+                    <p class="item-description">Pão brioche, hambúrguer artesanal de 180g (blend bovino), queijo cheddar duplo, bacon crocante, molho espartano (maionese defumada com alho e ervas), alface americana, tomate fresco, cebola crispy.</p>
+                </div>
+            </div>
+            
+            <!-- Um pouco mais -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1561758033-48d52648ae8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Um pouco mais Burger">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Um pouco mais <span class="item-price">R$46,90</span></h3>
+                    <p class="item-description">Pão brioche com gergelim, dois hambúrgueres artesanais de 150g, queijo prato, queijo cheddar, cebola caramelizada, bacon em tiras, maionese especial da casa, picles artesanal.</p>
+                </div>
+            </div>
+            
+            <!-- Leônidas -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="Leônidas Burger">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Leônidas <span class="item-price">R$47,90</span></h3>
+                    <p class="item-description">Pão de batata, hambúrguer artesanal de 200g, queijo gruyère, tomate grelhado, alface romana, molho de alho e limão, chips de batata-doce no lanche.</p>
+                </div>
+            </div>
+            
+            <!-- Cavalo de Tróia -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1585238341267-1cfec2046a55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Cavalo de Tróia Burger">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Cavalo de Tróia <span class="item-price">R$41,90</span></h3>
+                    <p class="item-description">Pão de sal, bife à cavalo (bife de contrafilé com ovo frito), queijo mussarela, alface, tomate, maionese da casa.</p>
+                </div>
+            </div>
+            
+            <!-- Esparta Clássico -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1586816001966-79b736744398?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Esparta Clássico Burger">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Esparta Clássico <span class="item-price">R$36,90</span></h3>
+                    <p class="item-description">Pão de brioche tradicional, hambúrguer artesanal de 120g, queijo mussarela, tomate, alface, maionese simples da casa.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Kids Menu (hidden by default) -->
+        <div class="menu-grid" id="kids-tab" style="display: none;">
+            <!-- Zeus Kids -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1596662951482-0c4e4a5d32e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Zeus Kids">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Zeus Kids <span class="item-price">R$24,90</span></h3>
+                    <p class="item-description">Mini pão brioche, mini hambúrguer bovino de 80g, queijo cheddar, ketchup.</p>
+                </div>
+            </div>
+            
+            <!-- Apolo Kids -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1606755456206-b25206b30b3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Apolo Kids">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Apolo Kids <span class="item-price">R$25,90</span></h3>
+                    <p class="item-description">Mini pão de batata, mini hambúrguer de frango de 80g, queijo prato, maionese.</p>
+                </div>
+            </div>
+            
+            <!-- Espartinha -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1522&q=80" alt="Espartinha">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Espartinha <span class="item-price">R$23,90</span></h3>
+                    <p class="item-description">Mini pão brioche, mini hambúrguer bovino de 80g, queijo mussarela, maionese.</p>
+                </div>
+            </div>
+            
+            <!-- Escudinho -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1378&q=80" alt="Escudinho">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Escudinho <span class="item-price">R$26,90</span></h3>
+                    <p class="item-description">Mini pão de batata, hambúrguer de frango empanado, queijo cheddar, ketchup.</p>
+                </div>
+            </div>
+            
+            <!-- Capacete Kids -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Capacete Kids">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Capacete Kids <span class="item-price">R$27,90</span></h3>
+                    <p class="item-description">Mini pão tradicional, hambúrguer artesanal de 60g, queijo prato, ovo de codorna frito, maionese temperada.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sides Menu (hidden by default) -->
+        <div class="menu-grid" id="sides-tab" style="display: none;">
+            <!-- Batata Frita P -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Batata Frita P">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Batata Frita P <span class="item-price">R$12,90</span></h3>
+                    <p class="item-description">Porção individual de batata frita crocante.</p>
+                </div>
+            </div>
+            
+            <!-- Batata Frita M -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1576107232684-1279f390859f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Batata Frita M">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Batata Frita M <span class="item-price">R$14,90</span></h3>
+                    <p class="item-description">Porção média de batata frita crocante.</p>
+                </div>
+            </div>
+            
+            <!-- Batata Frita G -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1585109649139-366815a0d713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Batata Frita G">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Batata Frita G <span class="item-price">R$15,90</span></h3>
+                    <p class="item-description">Porção grande de batata frita crocante.</p>
+                </div>
+            </div>
+            
+            <!-- Anéis de cebola -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1632818924360-68f9c1e35838?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Anéis de cebola">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Anéis de cebola <span class="item-price">R$18,90</span></h3>
+                    <p class="item-description">Porção de anéis de cebola empanados e crocantes.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Drinks Menu (hidden by default) -->
+        <div class="menu-grid" id="drinks-tab" style="display: none;">
+            <!-- Refrigerante Lata -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1610873167013-2dd675d30ef4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Refrigerante Lata">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Refrigerante Lata <span class="item-price">R$8,00</span></h3>
+                    <p class="item-description">Refrigerante em lata 350ml.</p>
+                </div>
+            </div>
+            
+            <!-- Refrigerante 600ml -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1624552184280-9e9631bbeee9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Refrigerante 600ml">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Refrigerante 600ml <span class="item-price">R$10,00</span></h3>
+                    <p class="item-description">Refrigerante em garrafa 600ml.</p>
+                </div>
+            </div>
+            
+            <!-- Chopp 500ml -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1612528443702-f6741f70a049?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="Chopp 500ml">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Chopp 500ml <span class="item-price">R$17,00</span></h3>
+                    <p class="item-description">Chopp artesanal 500ml.</p>
+                </div>
+            </div>
+            
+            <!-- Água mineral -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1561023806-077427762f82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Água mineral">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Água mineral (500ml) <span class="item-price">R$6,90</span></h3>
+                    <p class="item-description">Água mineral sem gás 500ml.</p>
+                </div>
+            </div>
+            
+            <!-- Suco natural -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Suco natural">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Suco natural (500ml) <span class="item-price">R$12,90</span></h3>
+                    <p class="item-description">Suco natural feito na hora 500ml.</p>
+                </div>
+            </div>
+            
+            <!-- Milkshake -->
+            <div class="menu-item">
+                <div class="menu-item-img">
+                    <img src="https://images.unsplash.com/photo-1577805947697-89e18249d767?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1458&q=80" alt="Milkshake">
+                </div>
+                <div class="menu-item-content">
+                    <h3 class="item-title">Milkshake (400ml) <span class="item-price">R$14,90</span></h3>
+                    <p class="item-description">Milkshake cremoso 400ml.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">Nossa Galeria</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1512152272829-e3139592d56f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Espartanos Hamburgueria">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Ambiente Espartanos">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1598&q=80" alt="Hambúrguer Trezentos">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="Hambúrguer Leônidas">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Batata Frita">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1612528443702-f6741f70a049?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="Chopp Artesanal">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Visite-nos</h3>
+                <div class="contact-detail">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Bauru/SP - Região nobre em desenvolvimento</p>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>(14) 99999-9999</p>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-envelope"></i>
+                    <p>atendimento@espartanoshamburgueria.com</p>
+                </div>
+                <div class="contact-detail">
+                    <i class="fas fa-clock"></i>
+                    <p>
+                        <strong>Horário de Funcionamento:</strong><br>
+                        Terça a quinta: 17h às 23h<br>
+                        Sexta e sábado: 17h às 01h<br>
+                        Domingos e feriados: 16h às 22h
+                    </p>
+                </div>
+                <div class="social-links" style="justify-content: flex-start; margin-top: 30px;">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="reservation-form">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Data</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Horário</label>
+                        <input type="time" id="time" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Número de Pessoas</label>
+                        <input type="number" id="guests" class="form-control" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem (Opcional)</label>
+                        <textarea id="message" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Reservar Mesa</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <img src="logo-white.png" alt="Espartanos Logo" class="footer-logo">
+                <p>Honra-se a mesa como se honra o campo de batalha</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Links Rápidos</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#menu">Cardápio</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Horário de Funcionamento</h4>
+                <div class="opening-hours">
+                    <p>Terça a Quinta <span>17h - 23h</span></p>
+                    <p>Sexta e Sábado <span>17h - 01h</span></p>
+                    <p>Domingo e Feriados <span>16h - 22h</span></p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Bauru/SP - Região nobre</p>
+                <p><i class="fas fa-phone-alt"></i> (14) 99999-9999</p>
+                <p><i class="fas fa-envelope"></i> atendimento@espartanoshamburgueria.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Espartanos Hamburgueria. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5514999999999" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Sticky Navigation
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 0);
+        });
+        
+        // Menu Tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const menuTabs = {
+            'burgers': document.getElementById('burgers-tab'),
+            'kids': document.getElementById('kids-tab'),
+            'sides': document.getElementById('sides-tab'),
+            'drinks': document.getElementById('drinks-tab')
+        };
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Hide all menu tabs
+                Object.values(menuTabs).forEach(tab => {
+                    tab.style.display = 'none';
+                });
+                
+                // Show selected tab
+                const tabToShow = btn.getAttribute('data-tab');
+                menuTabs[tabToShow].style.display = 'grid';
+            });
+        });
+        
+        // Form Submission
+        const reservationForm = document.getElementById('reservation-form');
+        reservationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to a server
+            // For this example, we'll just show an alert
+            alert('Reserva enviada com sucesso! Entraremos em contato para confirmar.');
+            reservationForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
